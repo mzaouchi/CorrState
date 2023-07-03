@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Person from './Components/Person';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  // Implement a state for this class containing a Person ={ fullName,bio, imgSrc, profession} and a boolean shows.
+
+state={
+      person : { 
+        fullName : "Brahim Brahim",
+        bio : "Student", 
+        imgSrc : "https://gomycodelearndev.blob.core.windows.net/profiles/1c35c579-4c49-4024-9fe8-386fa1c26571-133279603578113724.JPG",
+        profession : "Student at GOMYCODE"
+      },
+      show : false
+    }
+  
+  render(){
+    return(
+      <div>
+        <h1>Correction checkpoint State</h1>
+        <button onClick={()=> this.setState({show : !this.state.show})}>{this.state.show ? 'Hide' : 'Show'}</button>
+        {
+          this.state.show &&  <Person person={this.state.person}/>
+        }
+        
+      </div>
+    )
+  }
 }
 
 export default App;
